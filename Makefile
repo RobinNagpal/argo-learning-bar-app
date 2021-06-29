@@ -14,7 +14,7 @@ IMAGE_NAME="robinnagpal/argo-learning-bar-app:${COMMIT}"
 
 update-k8s-deployment:
 	~/yq --help
-	~/yq w -i k8s/bar-deployment.yml 'spec.template.spec.containers.[0].image' ${IMAGE_NAME}
+	~/yq -i k8s/bar-deployment.yml 'spec.template.spec.containers.[0].image' ${IMAGE_NAME}
 
 commit-circle-update: update-k8s-deployment
 	git add .
