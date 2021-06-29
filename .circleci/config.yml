@@ -17,20 +17,12 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
-      - &calc-source-commit-step
-        run:
-          name: Calculate latest source commit
-          command: |
-            git rev-parse --short HEAD | tee commit.txt
       - run:
-          name: Check for existing docker image
-          command: |
-            COMMIT=$(cat commit.txt)
-            TAG=${CIRCLE_BRANCH:-master}-${COMMIT}
-            if aws ecr describe-images --region us-east-1 --repository-name formative-node-app --image-ids imageTag=${TAG} ; then
-              touch skip-build
-            fi
-
+          name: Install YQ
+          command: yarn global add yq
+      - run:
+          name: Install YQ
+          command: make commit-circle-update
 workflows:
   sample:
     jobs:

@@ -6,12 +6,16 @@ IMAGE_NAME="robinnagpal/argo-learning-bar-app:${COMMIT}"
 write-commit:
 	echo ${COMMIT} > commit.txt
 
-docker-build:
+docker-build: write-commit
 	docker build . -t ${IMAGE_NAME}
-
 
 docker-push: docker-build
 	docker push ${IMAGE_NAME}
 
-update-k8s-deployment:
+update-k8s-deployment: docker-push
 	yq w -i k8s/bar-deployment.yml 'spec.template.spec.containers.[0].image' ${IMAGE_NAME}
+
+commit-circle-update: update-k8s-deployment
+	git add .
+	git commit -m "Update master version"
+	git push origin master
