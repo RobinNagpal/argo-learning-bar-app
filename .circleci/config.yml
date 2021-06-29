@@ -22,8 +22,9 @@ jobs:
       - run:
           name: Install YQ
           command: yarn global add yq
-      - run: |
-          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+      - run:
+          name: docker login
+          command: echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
       - run:
           name: Buid and commit
           command: make commit-circle-update
