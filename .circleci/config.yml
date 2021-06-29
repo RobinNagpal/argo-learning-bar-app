@@ -11,6 +11,7 @@ orbs:
 
 jobs:
   build-docker-image:
+    machine: true
     docker:
       - image: cimg/node:15.1
     steps:
@@ -21,8 +22,10 @@ jobs:
       - run:
           name: Install YQ
           command: yarn global add yq
+      - run: |
+          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
       - run:
-          name: Install YQ
+          name: Buid and commit
           command: make commit-circle-update
 workflows:
   sample:
