@@ -22,7 +22,8 @@ jobs:
           command: yarn
       - run:
           name: Install YQ
-          command: yarn global add yq
+          command: wget https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64.tar.gz -O - |\
+            tar xz && mv ${BINARY} /usr/bin/yq
       - run:
           name: docker login
           command: echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
