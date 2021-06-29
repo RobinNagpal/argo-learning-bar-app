@@ -3,8 +3,12 @@
 COMMIT=$(shell git rev-parse --short HEAD)
 IMAGE_NAME="robinnagpal/argo-learning-bar-app:${COMMIT}"
 
+write-commit:
+	echo ${COMMIT} > commit.txt
+
 docker-build:
 	docker build . -t ${IMAGE_NAME}
+
 
 docker-push: docker-build
 	docker push ${IMAGE_NAME}
