@@ -14,11 +14,10 @@ spec:
     spec:
       containers:
         - name: bar-app
-          image: robinnagpal/kubernetes-tutorial-003-node-app:latest
+          image: robinnagpal/argo-learning-bar-app:90f080a
           env:
             - name: APP_NAME
               value: bar
-
 ---
 apiVersion: v1
 kind: Service

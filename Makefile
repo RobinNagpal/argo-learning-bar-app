@@ -1,4 +1,13 @@
+.SHELLFLAGS = -ec
+
+COMMIT=$(shell git rev-parse --short HEAD)
+IMAGE_NAME="robinnagpal/argo-learning-bar-app:${COMMIT}"
+
 docker-build:
-	docker build . -t robinnagpal/kubernetes-tutorial-003-node-app
-docker-push:
-	docker push robinnagpal/kubernetes-tutorial-003-node-app
+	docker build . -t ${IMAGE_NAME}
+
+docker-push: docker-build
+	docker push ${IMAGE_NAME}
+
+update-k8s-deployment:
+	yq w -i k8s/bar-deployment.yml 'spec.template.spec.containers.[0].image' ${IMAGE_NAME}
