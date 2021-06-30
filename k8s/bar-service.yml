@@ -9,14 +9,3 @@ spec:
   ports:
     - port: 3000
       targetPort: 3000
-  0:
-    template:
-      spec:
-        containers:
-          - image: robinnagpal/argo-learning-bar-app:fa858c6
-0:
-  spec:
-    template:
-      spec:
-        containers:
-          - image: robinnagpal/argo-learning-bar-app:7700031
