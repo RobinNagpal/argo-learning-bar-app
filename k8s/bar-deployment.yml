@@ -18,26 +18,3 @@ spec:
           env:
             - name: APP_NAME
               value: bar
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: bar-app-service
-spec:
-  type: NodePort
-  selector:
-    app: bar-app
-  ports:
-    - port: 3000
-      targetPort: 3000
-  0:
-    template:
-      spec:
-        containers:
-          - image: robinnagpal/argo-learning-bar-app:fa858c6
-0:
-  spec:
-    template:
-      spec:
-        containers:
-          - image: robinnagpal/argo-learning-bar-app:7700031
