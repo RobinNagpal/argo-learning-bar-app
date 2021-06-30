@@ -13,7 +13,7 @@ docker-push: docker-build
 	docker push ${IMAGE_NAME}
 
 update-k8s-deployment:
-	~/yq eval -i 'spec.template.spec.containers.[0].image=${IMAGE_NAME}'   k8s/bar-deployment.yml
+	~/yq eval -i 'spec.template.spec.containers.[0].image=${IMAGE_NAME}' k8s/bar-deployment.yml
 
 commit-circle-update: update-k8s-deployment
 	git add .
