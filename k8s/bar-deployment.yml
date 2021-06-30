@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: bar-app
-          image: robinnagpal/argo-learning-bar-app:90f080a
+          image: robinnagpal/argo-learning-bar-app:a741469
           env:
             - name: APP_NAME
               value: bar
@@ -30,3 +30,7 @@ spec:
   ports:
     - port: 3000
       targetPort: 3000
+  template:
+    spec:
+      containers:
+        - image: robinnagpal/argo-learning-bar-app:a741469
