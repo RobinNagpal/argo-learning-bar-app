@@ -18,6 +18,11 @@ spec:
           env:
             - name: APP_NAME
               value: bar
+  0:
+    template:
+      spec:
+        containers:
+          - image: robinnagpal/argo-learning-bar-app:fa858c6
 ---
 apiVersion: v1
 kind: Service
@@ -30,6 +35,11 @@ spec:
   ports:
     - port: 3000
       targetPort: 3000
+  0:
+    template:
+      spec:
+        containers:
+          - image: robinnagpal/argo-learning-bar-app:fa858c6
 0:
   spec:
     template:
