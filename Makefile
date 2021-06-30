@@ -17,5 +17,5 @@ update-k8s-deployment:
 
 commit-circle-update: update-k8s-deployment
 	git add .
-	git commit -m "Update master version"
+	git commit -m "Update master version [ci skip]"
 	git push origin master
