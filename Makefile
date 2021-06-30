@@ -13,8 +13,7 @@ IMAGE_NAME="robinnagpal/argo-learning-bar-app:${COMMIT}"
 #	docker push ${IMAGE_NAME}
 
 update-k8s-deployment:
-	~/yq --help
-	~/yq -i k8s/bar-deployment.yml 'spec.template.spec.containers.[0].image' ${IMAGE_NAME}
+	~/yq eval 'spec.template.spec.containers.[0].image="${IMAGE_NAME}"'   k8s/bar-deployment.yml
 
 commit-circle-update: update-k8s-deployment
 	git add .
