@@ -27,6 +27,9 @@ jobs:
           name: docker login
           command: echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
       - run:
+          name: Git Config
+          command: git config user.email "circleci@jomo.clicl" && git config user.name "Circle"
+      - run:
           name: Buid and commit
           command: make commit-circle-update
 workflows:
