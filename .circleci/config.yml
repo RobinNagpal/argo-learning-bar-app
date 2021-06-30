@@ -14,9 +14,6 @@ jobs:
     docker:
       - image: cimg/node:15.1
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "7a:90:b4:49:73:b4:d6:0c:99:7d:d5:3c:4f:f3:b5:2f"
       - setup_remote_docker:
           version: 19.03.13
       - checkout
@@ -32,6 +29,9 @@ jobs:
       - run:
           name: Git Config
           command: git config user.email "circleci@jomo.clicl" && git config user.name "Circle"
+      - add_ssh_keys:
+          fingerprints:
+            - "7a:90:b4:49:73:b4:d6:0c:99:7d:d5:3c:4f:f3:b5:2f"
       - run:
           name: Buid and commit
           command: make commit-circle-update
