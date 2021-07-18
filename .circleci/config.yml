@@ -31,7 +31,7 @@ jobs:
             - "7a:90:b4:49:73:b4:d6:0c:99:7d:d5:3c:4f:f3:b5:2f"
       - run:
           name: Git Config
-          command: git config user.email "circleci@jomo.clicl" && git config user.name "Circle"
+          command: git config user.email "circleci@jomo.click" && git config user.name "Circle"
       - run:
           name: Buid and commit
           command: make commit-circle-update
