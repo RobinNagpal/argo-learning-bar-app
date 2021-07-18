@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: bar-app
-          image: robinnagpal/argo-learning-bar-app:85b4c76
+          image: robinnagpal/argo-learning-bar-app:0a63698
           env:
             - name: APP_NAME
               value: bar
